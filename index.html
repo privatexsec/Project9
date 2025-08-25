@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palang Merah Indonesia - Bantu Korban Demonstrasi 25 Agustus 2025</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pmi-red: #e30613;
+            --pmi-dark: #8a0000;
+            --pmi-light: #fff2f2;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .emergency-alert {
+            background-color: var(--pmi-red);
+            color: white;
+            padding: 12px 0;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            animation: blink 1.5s infinite;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .emergency-alert::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shine 2s infinite;
+        }
+        
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.9; }
+            100% { opacity: 1; }
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+        
+        .logo {
+            height: 60px;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1584697964358-3e14ca57658b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .casualty-counter {
+            margin: 30px 0;
+        }
+        
+        .counter-card {
+            background: rgba(255,255,255,0.15);
+            border-radius: 10px;
+            padding: 25px 15px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s;
+        }
+        
+        .counter-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .counter-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .counter-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .btn-donate {
+            background-color: var(--pmi-red);
+            color: white;
+            font-weight: 600;
+            padding: 15px 40px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(227, 6, 19, 0.4);
+        }
+        
+        .btn-donate:hover {
+            background-color: var(--pmi-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(227, 6, 19, 0.5);
+        }
+        
+        .btn-donate:active {
+            transform: translateY(1px);
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--pmi-red);
+        }
+        
+        .news-section {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .news-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+            height: 100%;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .news-img {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+        }
+        
+        .donation-section {
+            background-color: var(--pmi-light);
+            padding: 80px 0;
+        }
+        
+        .donation-option {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 2px solid transparent;
+            margin-bottom: 20px;
+        }
+        
+        .donation-option:hover {
+            transform: translateY(-5px);
+            border-color: var(--pmi-red);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .donation-option.selected {
+            border-color: var(--pmi-red);
+            background-color: #fff8f8;
+        }
+        
+        .donation-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--pmi-dark);
+            margin: 10px 0;
+        }
+        
+        .custom-amount {
+            margin-top: 20px;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            background-color: var(--pmi-red);
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            transform: translateX(100%);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+        .notification i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .payment-modal .modal-content {
+            border-radius: 15px;
+            overflow: hidden;
+            border: none;
+        }
+        
+        .payment-modal .modal-header {
+            background-color: var(--pmi-red);
+            color: white;
+            border-bottom: none;
+        }
+        
+        .payment-modal .modal-body {
+            padding: 30px;
+        }
+        
+        .qris-code {
+            max-width: 250px;
+            margin: 0 auto 20px;
+            display: block;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        
+        .total-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin: 20px 0;
+            color: var(--pmi-dark);
+        }
+        
+        .btn-confirm {
+            background-color: var(--pmi-red);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-confirm:hover {
+            background-color: var(--pmi-dark);
+            transform: translateY(-2px);
+        }
+        
+        .footer {
+            background-color: #2d2d2d;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-logo {
+            height: 50px;
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--pmi-red);
+        }
+        
+        .copyright {
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 50px 0;
+            }
+            
+            .counter-number {
+                font-size: 2rem;
+            }
+            
+            .btn-donate {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Alert Darurat -->
+    <div class="emergency-alert">
+        <div class="container">
+            <i class="fas fa-exclamation-circle me-2"></i>
+            <span>DARURAT KEMANUSIAAN: Demonstrasi Pembubaran DPR 25 Agustus 2025 Menelan Banyak Korban Jiwa - PMI Membutuhkan Bantuan Anda!</span>
+        </div>
+    </div>
+
+    <!-- Navigasi -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://drzuhdy.com/wp-content/uploads/2020/07/gambar-logo-palang-merah-indonesia-png-vector-1024x768.png" alt="Logo PMI" class="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Tentang Kami</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Berita</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Kegiatan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Relawan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Kontak</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-4">Bantu Korban Demonstrasi 25 Agustus 2025</h1>
+            <p class="lead mb-5">Palang Merah Indonesia sedang melakukan respons darurat untuk memberikan pertolongan pertama, evakuasi, dan dukungan kemanusiaan bagi korban dan keluarga yang terdampak.</p>
+            
+            <div class="casualty-counter">
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="counter-card">
+                            <div class="counter-number">853</div>
+                            <div class="counter-label">Luka-Luka</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="counter-card">
+                            <div class="counter-number">2</div>
+                            <div class="counter-label">Meninggal Dunia</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="counter-card">
+                            <div class="counter-number">81</div>
+                            <div class="counter-label">Hilang</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn btn-donate btn-lg" data-bs-toggle="modal" data-bs-target="#donationModal">
+                <i class="fas fa-hand-holding-heart me-2"></i>DONASI SEKARANG
+            </button>
+        </div>
+    </section>
+
+    <!-- Berita Section -->
+    <section class="news-section">
+        <div class="container">
+            <h2 class="section-title">Informasi Terkini</h2>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="news-card">
+                        <img src="https://images.unsplash.com/photo-1580209757984-9c355ab76a68?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" alt="PMI Evakuasi Korban" class="news-img">
+                        <div class="p-4">
+                            <h4>PMI Evakuasi Korban Demonstrasi</h4>
+                            <p>Tim relawan PMI terus melakukan evakuasi korban dari lokasi demonstrasi yang berlangsung ricuh pada 25 Agustus 2025.</p>
+                            <a href="#" class="btn btn-sm btn-outline-danger">Baca Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="news-card">
+                        <img src="https://images.unsplash.com/photo-1577896849785-ac1b5866bd57?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" alt="Pertolongan Pertama" class="news-img">
+                        <div class="p-4">
+                            <h4>Pertolongan Pertama di Lokasi</h4>
+                            <p>Tenaga medis PMI memberikan pertolongan pertama kepada korban luka-luka di sekitar lokasi kejadian.</p>
+                            <a href="#" class="btn btn-sm btn-outline-danger">Baca Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="news-card">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" alt="Kebutuhan Logistik" class="news-img">
+                        <div class="p-4">
+                            <h4>Kebutuhan Logistik Mendesak</h4>
+                            <p>PMI membutuhkan tambahan logistik seperti tenda, selimut, makanan siap saji, dan obat-obatan untuk membantu korban.</p>
+                            <a href="#" class="btn btn-sm btn-outline-danger">Baca Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donasi Section -->
+    <section class="donation-section">
+        <div class="container">
+            <h2 class="section-title">Bantu Korban dengan Berdonasi</h2>
+            <p class="text-center mb-5">Dukungan Anda sangat berarti untuk membantu korban dan keluarga yang terdampak. Donasi akan digunakan untuk:</p>
+            
+            <div class="row mb-5">
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <div class="display-4 text-danger mb-2"><i class="fas fa-first-aid"></i></div>
+                        <h5>Pertolongan Pertama</h5>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <div class="display-4 text-danger mb-2"><i class="fas fa-ambulance"></i></div>
+                        <h5>Evakuasi Korban</h5>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <div class="display-4 text-danger mb-2"><i class="fas fa-heartbeat"></i></div>
+                        <h5>Perawatan Medis</h5>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <div class="display-4 text-danger mb-2"><i class="fas fa-home"></i></div>
+                        <h5>Pemulihan Korban</h5>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn btn-donate btn-lg" data-bs-toggle="modal" data-bs-target="#donationModal">
+                    <i class="fas fa-hand-holding-heart me-2"></i>DONASI SEKARANG
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Donasi -->
+    <div class="modal fade payment-modal" id="donationModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Donasi untuk Korban Demonstrasi</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="donationStep1">
+                        <h6 class="text-center mb-4">Pilih Nominal Donasi:</h6>
+                        <div class="row">
+                            <div class="col-6 mb-3">
+                                <div class="donation-option" data-amount="20000">
+                                    <div class="donation-amount">Rp 20.000</div>
+                                    <small>Minimal donasi</small>
+                                </div>
+                            </div>
+                            <div class="col-6 mb-3">
+                                <div class="donation-option" data-amount="50000">
+                                    <div class="donation-amount">Rp 50.000</div>
+                                </div>
+                            </div>
+                            <div class="col-6 mb-3">
+                                <div class="donation-option" data-amount="100000">
+                                    <div class="donation-amount">Rp 100.000</div>
+                                </div>
+                            </div>
+                            <div class="col-6 mb-3">
+                                <div class="donation-option" data-amount="250000">
+                                    <div class="donation-amount">Rp 250.000</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="custom-amount">
+                            <label for="customAmount" class="form-label">Atau masukkan nominal lain:</label>
+                            <div class="input-group">
+                                <span class="input-group-text">Rp</span>
+                                <input type="number" class="form-control" id="customAmount" min="0">
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid gap-2 mt-4">
+                            <button class="btn btn-donate" id="continueToPayment">Lanjutkan ke Pembayaran</button>
+                        </div>
+                    </div>
+                    
+                    <div id="donationStep2" style="display: none;">
+                        <h6 class="text-center mb-4">Pembayaran via QRIS</h6>
+                        
+                        <img src="https://i.imghippo.com/files/wkV5114sE.jpg" alt="QR Code Pembayaran" class="qris-code">
+                        
+                        <div class="total-amount" id="totalAmount">Rp 0</div>
+                        
+                        <p class="text-center mb-4">Scan QR code di atas menggunakan aplikasi e-wallet atau mobile banking untuk melakukan pembayaran.</p>
+                        
+                        <div class="mb-4">
+                            <label for="paymentProof" class="form-label">Upload Bukti Pembayaran (opsional):</label>
+                            <input type="file" class="form-control" id="paymentProof" accept="image/*">
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-confirm" id="completePayment">
+                                <i class="fas fa-check-circle me-2"></i>Konfirmasi Pembayaran
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notifikasi -->
+    <div class="notification" id="notification">
+        <i class="fas fa-exclamation-circle"></i>
+        <span id="notificationText"></span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <img src="https://drzuhdy.com/wp-content/uploads/2020/07/gambar-logo-palang-merah-indonesia-png-vector-1024x768.png" alt="Logo PMI" class="footer-logo">
+                    <p>Palang Merah Indonesia adalah organisasi kemanusiaan yang memberikan bantuan tanpa membedakan agama, bangsa, suku, ras, atau pandangan politik.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Kontak</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Jl. Jenderal Gatot Subroto Kav. 96, Jakarta</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2"></i> (021) 7992325</li>
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i> info@pmi.or.id</li>
+                        <li class="mb-2"><i class="fas fa-globe me-2"></i> www.pmi.or.id</li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Tautan Cepat</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white">Tentang PMI</a></li>
+                        <li class="mb-2"><a href="#" class="text-white">Program PMI</a></li>
+                        <li class="mb-2"><a href="#" class="text-white">Jadi Relawan</a></li>
+                        <li class="mb-2"><a href="#" class="text-white">Berita Terkini</a></li>
+                        <li class="mb-2"><a href="#" class="text-white">Laporan Keuangan</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Palang Merah Indonesia. Semua hak dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Variabel global untuk menyimpan data donasi
+            let donationData = {
+                amount: 0
+            };
+            
+            // Element references
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+            const customAmount = document.getElementById('customAmount');
+            const continueBtn = document.getElementById('continueToPayment');
+            const completePaymentBtn = document.getElementById('completePayment');
+            const totalAmountSpan = document.getElementById('totalAmount');
+            const donationStep1 = document.getElementById('donationStep1');
+            const donationStep2 = document.getElementById('donationStep2');
+            
+            // Tampilkan notifikasi
+            function showNotification(message, isError = true) {
+                notificationText.textContent = message;
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 5000);
+            }
+            
+            // Pilih nominal donasi
+            document.querySelectorAll('.donation-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    // Hapus selected class dari semua opsi
+                    document.querySelectorAll('.donation-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Tambahkan selected class ke opsi yang dipilih
+                    this.classList.add('selected');
+                    
+                    // Set nilai amount
+                    donationData.amount = parseInt(this.getAttribute('data-amount'));
+                    customAmount.value = donationData.amount;
+                });
+            });
+            
+            // Input nominal custom
+            customAmount.addEventListener('input', function() {
+                const value = parseInt(this.value) || 0;
+                donationData.amount = value;
+                
+                // Hapus selected class dari opsi preset
+                document.querySelectorAll('.donation-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+            });
+            
+            // Tombol lanjut ke pembayaran
+            continueBtn.addEventListener('click', function() {
+                if (donationData.amount < 20000) {
+                    showNotification('Minimal donasi adalah Rp 20.000');
+                    return;
+                }
+                
+                // Update tampilan total
+                totalAmountSpan.textContent = `Rp ${donationData.amount.toLocaleString('id-ID')}`;
+                
+                // Tampilkan step 2
+                donationStep1.style.display = 'none';
+                donationStep2.style.display = 'block';
+            });
+            
+            // Selesaikan pembayaran
+            completePaymentBtn.addEventListener('click', function() {
+                // Tampilkan notifikasi sukses
+                showNotification('Terima kasih telah melakukan donasi, kami sedang melakukan pengecekan lebih lanjut', false);
+                
+                // Tutup modal setelah 3 detik
+                setTimeout(() => {
+                    const donationModal = bootstrap.Modal.getInstance(document.getElementById('donationModal'));
+                    donationModal.hide();
+                    
+                    // Reset form
+                    donationData = {
+                        amount: 0
+                    };
+                    
+                    document.querySelectorAll('.donation-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    customAmount.value = '';
+                    
+                    donationStep2.style.display = 'none';
+                    donationStep1.style.display = 'block';
+                }, 3000);
+            });
+        });
+    </script>
+</body>
+</html>
